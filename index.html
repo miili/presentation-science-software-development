@@ -1,48 +1,268 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+        <title>Sustainable software and data</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2
-						<aside class="notes">
-						<p>Some notes</p>
-						</aside>
-						<p>Some slide text</p>
-						<aside class="notes">
-						<p>and some more notes</p>
-					</aside>
-				</section>
-			</div>
-		</div>
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/black.css">
+        <link rel="stylesheet" href="style.css">
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    </head>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-image="figures/osama-elsayed-vqRMXgVtGXM-unsplash.jpg">
+                    <div class="box text-shadow">
+                        <h2>Sustainable software and data</h2>
+                        <h3>open and community driven software development</h3>
+                        <p><b>Marius Paul Isken</b></p>
+                        <p>GFZ German Research Centre for Geosciences, Potsdam &middot; QuakeSaver GmbH</p>
+                        <p>
+                            <img data-src=" logos/logo-gfz.svg" class="logo" />
+                        </p>
+                    </div>
+                </section>
+                <section>
+                    <h2>Introduction</h2>
+                    <ol>
+                        <li>Sustainable software development</li>
+                        <li>Open Data</li>
+                        <li>Publishing software and data</li>
+                    </ol>
+                </section>
+                <section>
+                    <section>
+                        <h2>Why is this important?</h2>
+                        <ul>
+                            <li class="fragment fade-in-then-semi-out" style="font-style: italic;">Scientific code is as
+                                important as the paper</li>
+                            <li class="fragment fade-in-then-semi-out">Software is needed to reproduce results</li>
+                            <li class="fragment fade-in-then-semi-out">Tools can be shared with the community 🔥</li>
+                        </ul>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>reproduction and peer review. Double standard.</li>
+                                <li style="font-style: bold;">How much time do you spend coding?</li>
+                            </ul>
+
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>What is sustainable software?</h2>
+                        <ul>
+                            <li class="fragment fade-in-then-semi-out">Open access</li>
+                            <li class="fragment fade-in-then-semi-out">Readable</li>
+                            <li class="fragment fade-in-then-semi-out">Maintainable</li>
+                            <li class="fragment fade-in-then-semi-out">Modular and extensible</li>
+                        </ul>
+                        <p class="fragment">
+                            🐿️ Open to the community, open to collaboration.
+                        </p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Code can be re-used by many people.</li>
+                                <li>Do one thing and to it right.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2>Readable code 📚</h2>
+                        <ul>
+                            <li><b>Reading code</b> takes as much time as writing it</li>
+                            <li class="fragment">Code <b>review, collaboration and extensibility</b></li>
+                        </ul>
+                        <aside class="notes">YOU need to read your code again! How often have you come back and could
+                            not read your code?</aside>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Code is Communication </h2>
+                        <pre class="python"><code data-trim data-noescape data-line-numbers>
+for i in all_data:
+    p.add(i)
+
+l = len(p)
+
+def sel_eq(c, x, r, time):
+    ...
+</code>
+                    </pre>
+                        <div class="fragment">
+                            <p>Be explicit, be clear.</p>
+                            <pre class="python" data-id="example-good"><code data-trim data-noescape data-line-numbers>
+for earthquake in catalog:
+    selected_earthquakes.add(earthquake)
+
+total_earthquakes = len(selected_earthquakes)
+
+
+def select_earthquakes(catalog, max_distance, max_depth, sort=False):
+    ...
+</code>
+                    </pre>
+                            <p class="fragment">Principle of <b>self-documenting code</b>.<br />Avoid comments where not
+                                necessary.</p>
+                        </div>
+                        <aside class="notes">
+                            pre-optimisation is the root of all evil.
+                        </aside>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2>Code is communication</h2>
+                        <pre class="python" data-id="example-good"><code data-trim data-line-numbers>
+for earthquake in catalog:
+    selected_earthquakes.add(earthquake)
+
+total_earthquakes = len(selected_earthquakes)
+
+
+def select_earthquakes(catalog, max_distance, max_depth, sort=False):
+    """Select earthquakes within a given distance and depth range.
+
+    Args:
+    catalog (EarthquakeCatalog): Earthquake catalogue to select from.
+    max_distance (float): Maximum spherical distance in meters.
+    max_depth (float): Maximum depth in meters.
+    sort (bool, optional): Limit number of earthquakes. Defaults to False.
+    """
+    ...</code></pre>
+                        <p>Be descriptive.</p>
+                        <p class="fragment">Principle of <b>self-documenting code</b>.<br />Avoid unnecessary comments.
+                        </p>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2>Code Formatting</h2>
+                        <p>Every code looks different. It shouldn't!</p>
+                        <pre class="python"><code data-trim data-line-numbers>
+def select_earthquakes(catalog,max_distance,max_depth,sort = False):
+    if catalog==None: return
+
+    total_earthquakes=len(catalog)
+
+    selected_earthquakes= set()
+    for earthquake in catalog:
+        selected_earthquakes.add(
+        earthquake
+        )
+
+    ...
+                        </code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Code Formatting</h2>
+                        <p>Every code looks different. It shouldn't!</p>
+                        <pre class="python"><code data-trim data-line-numbers>
+def select_earthquakes(catalog, max_distance, max_depth, sort=False):
+    if catalog is None:
+        return
+
+    total_earthquakes = len(catalog)
+
+    selected_earthquakes = set()
+    for earthquake in catalog:
+        selected_earthquakes.add(earthquake)
+
+    ...
+                        </code></pre>
+
+                        <p>Use autoformatters and linters.</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Your brain is extremely good at pattern matching. Use it!</li>
+                                <li>Modern programming languages come with built-in tools, they can only look one way
+                                </li>
+                                <li>Automate this in modern IDEs</li>
+                                <li>black, autopep8, flake8. Matlab: mlint</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Code Reviews</h2>
+                        Use GitHub code reviews, get out there and stand the critiques.
+                        <aside class="notes">Sometimes the ego is in our way. Try taking it out.</aside>
+                    </section>
+
+                    <section>
+                        <h2>Programming Patterns</h2>
+                        See gang of four.
+                    </section>
+
+                    <section>
+                        <h2>Packaging Software -> Accessibility</h2>
+                    </section>
+
+                    <section>
+                        <h2>Automation</h2>
+                    </section>
+
+                    <section>
+                        <h2>DevOps: Automation through CI/CD </h2>
+                    </section>
+                    <section>
+                        <h2>Modern IDEs</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Open Data</h2>
+                    </section>
+                    <section>
+                        <h2>Finding the right format</h2>
+                    </section>
+                    <section>
+                        <h2>Clear language (Metadata</h2>)
+                    </section>
+                    <section>
+                        <h2>Provide a library</h2>
+                    </section>
+                    <section>
+                        <h2>Definition of APIs</h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Publishing Software and Data</h2>
+                    </section>
+                    <section>
+                        <h2>Zenodo</h2>
+                    </section>
+                    <section>
+                        <h2>JOSS A reviewed journal.</h2>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+                width: 1920,
+                height: 1080,
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            });
+        </script>
+    </body>
+
 </html>
