@@ -26,11 +26,13 @@
                         <p><b>Marius Paul Isken</b></p>
                         <p>GFZ German Research Centre for Geosciences, Potsdam &middot; QuakeSaver GmbH</p>
                         <p>
-                            <img data-src=" logos/logo-gfz.svg" class="logo" />
                         </p>
                     </div>
+                    <div class="r-stretch"></div>
+                    <img data-src="logos/logo-gfz.svg" class="logo" />
+                    <img data-src="logos/quakesaver.png" class="logo" style="width: 20%; height: 20%" />
                 </section>
-                <section>
+                <section data-visibility="hidden">
                     <h2>Introduction</h2>
                     <ol>
                         <li>Sustainable software development</li>
@@ -39,35 +41,50 @@
                     </ol>
                 </section>
                 <section>
-                    <section>
-                        <h2>Why is this important?</h2>
-                        <ul>
-                            <li class="fragment fade-in-then-semi-out" style="font-style: italic;">Scientific code is as
-                                important as the paper</li>
-                            <li class="fragment fade-in-then-semi-out">Discuss implementations with peers</li>
-                            <li class="fragment fade-in-then-semi-out">Tools can be shared 🔥</li>
-                        </ul>
-
-                        <aside class="notes">
+                    <section data-background-image="figures/library.jpg">
+                        <div class="box text-shadow">
+                            <h2>Why is open software important?</h2>
                             <ul>
-                                <li>reproduction and peer review. Double standard.</li>
-                                <li style="font-style: bold;">How much time do you spend coding?</li>
+                                <li class="fragment">
+                                    Sharing and reuse benefits all 🔥</li>
+                                <li class="fragment">Contribute to the knowledge society</li>
+                                <li class="fragment">Discuss implementations to peers</li>
                             </ul>
+                            <p class="fragment" style="font-style: italic;margin-top: 2em;">
+                                ... Scientific code is as important as the paper</p>
 
-                        </aside>
+                            <aside class="notes">
+                                <ul>
+                                    <li>reproduction and peer review. Double standard.</li>
+                                    <li style="font-style: bold;">How much time do you spend coding?</li>
+                                </ul>
+
+                            </aside>
+                        </div>
+                    </section>
+                    <section data-background-color="white">
+                        <h2>European Commission Guidelines</h2>
+                        <div><img data-src="figures/eu-share.png" /></div>
+                        <div class="fragment"><img data-src="figures/eu-transform.png" /></div>
+                        <div class="fragment"><img data-src="figures/eu-control.png" /></div>
+                        <!-- <div class="fragment"><img data-src="figures/eu-contribute.png" /></div>
+                        <div class="fragment"><img data-src="figures/eu-safety.png" /></div> -->
+                        <p style="font-size: 50%; font-style: italic;"> - European Comission Open Source Guidelines
+                            (2020)</p>
                     </section>
                     <section>
-                        <h2>What is sustainable software?</h2>
+                        <h2>What are principles of open software?</h2>
                         <ul>
-                            <li class="fragment fade-in-then-semi-out">Open access &rarr; <span
+                            <li class="fragment fade-in-then-semi-out">Free and open access &rarr; <span
                                     style="font-family: monospace;">git</span> / GitHub</li>
                             <li class="fragment fade-in-then-semi-out">Readable</li>
                             <li class="fragment fade-in-then-semi-out">Maintainable</li>
                             <li class="fragment fade-in-then-semi-out">Modular and extensible</li>
                         </ul>
-                        <p class="fragment">
-                            🐿️ Open to the community, engagement to collaboration.
+                        <p class="fragment" style="margin-top: 2em">
+                            🐿️ Open to the community, engagement to collaboration<br />
                         </p>
+                        <p style="font-style: italic; margin-top: 1em;">We build together</p>
                         <aside class="notes">
                             <ul>
                                 <li>Code can be re-used by many people.</li>
@@ -80,7 +97,7 @@
                         <h2>Readable code 📚</h2>
                         <ul>
                             <li><b>Reading code</b> takes as much time as writing it</li>
-                            <li class="fragment">Code <b>review, collaboration and extensibility</b></li>
+                            <li class="fragment">Facilitates code <b>review and contribution</b></li>
                         </ul>
                         <aside class="notes">YOU need to read your code again! How often have you come back and could
                             not read your code?</aside>
@@ -90,9 +107,7 @@
                         <pre class="python"><code data-trim data-noescape data-line-numbers>
 for i in all_data:
     p.add(i)
-
 l = len(p)
-
 def sel_eq(c, x, r, time):
     ...
 </code>
@@ -110,8 +125,8 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     ...
 </code>
                     </pre>
-                            <p class="fragment">Principle of <b>self-documenting code</b>.<br />Avoid comments where not
-                                necessary.</p>
+                            <p class="fragment">Principle of <b>self-documenting code</b><br />
+                                Avoid comments where not necessary</p>
                         </div>
                         <aside class="notes">
                             pre-optimisation is the root of all evil.
@@ -137,18 +152,16 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     sort (bool, optional): Limit number of earthquakes. Defaults to False.
     """
     ...</code></pre>
-                        <p>Function documentation. Automatically generate online documentation.</p>
+                        <p>Automatically generate online documentation</p>
                     </section>
 
                     <section data-auto-animate>
                         <h2>Code Formatting</h2>
-                        <p>Code styles can look different. It shouldn't!</p>
+                        <p>Code styles can look different. They should not!</p>
                         <pre class="python"><code data-trim data-line-numbers>
 def select_earthquakes(catalog,max_distance,max_depth,sort = False):
     if catalog==None: return
-
     total_earthquakes=len(catalog)
-
     selected_earthquakes= set()
     for earthquake in catalog:
         selected_earthquakes.add(
@@ -160,7 +173,7 @@ def select_earthquakes(catalog,max_distance,max_depth,sort = False):
                     </section>
                     <section data-auto-animate>
                         <h2>Code Formatting</h2>
-                        <p>Every code looks different. It shouldn't!</p>
+                        <p>Code styles can look different. They should not!</p>
                         <pre class="python"><code data-trim data-line-numbers>
 def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     if catalog is None:
@@ -175,7 +188,7 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     ...
                         </code></pre>
 
-                        <p><b>Use autoformatters and linters.</b></p>
+                        <p><b>Use autoformatters and linters</b></p>
                         <div>
                             <ul>
                                 <li>Python: black / autopep8 / flake8</li>
@@ -196,54 +209,66 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
 
                     <section>
                         <h2>Leverage modern editors</h2>
-                        <p>Modern IDEs automate tasks and provide contextual information.</p>
+                        <p>Modern IDEs <b>automate tasks</b> and provide <b>contextual information</b>.</p>
                         <div class="r-stretch"><img data-src="figures/hello-world.gif" /></div>
                         <ul>
                             <li>Autocompletion</li>
                             <li>Formatting</li>
                             <li>Linting / static code analysis</li>
                         </ul>
-                        <p>&rarr; Smooth workflow, fewer bugs</p>
+                        <p>&rarr; Smoother workflow, less bugs!</p>
                     </section>
 
                     <section data-background-color="white">
                         <h2>Programming Patterns</h2>
-                        <img data-src="figures/pattern-observer.png" width="30%" />
-                        <p>e.g. observer pattern / Credit: <a href="https://refactoring.guru">refactoring.guru</a></p>
-                        <p style="font-style: italic;">Design Patterns: Elements of Reusable Object-Oriented
-                            Software (1994)
+                        <p>Make use of established abstract patterns</p>
+                        <img data-src="figures/pattern-observer.png" width="35%" />
+                        <p style="font-size: smaller">e.g. Observer Pattern</p>
+                        <p style="font-style: italic; font-size: smaller">Design Patterns: Elements of Reusable
+                            Object-Oriented Software (1994)
                         </p>
                     </section>
                     <section>
                         <h2>Programming Patterns</h2>
                         <iframe data-src="https://refactoring.guru/design-patterns/catalog" width="90%"
                             class="r-stretch" data-preload></iframe>
-                        <p>Credit: <a href="https://refactoring.guru">refactoring.guru</a></p>
+                        <p style="font-size: smaller">Credit: <a href="https://refactoring.guru">refactoring.guru</a>
+                        </p>
                     </section>
 
                     <section>
                         <h2>Unittests</h2>
-                        <p>Write small snippets of code testing your functions.</p>
+                        <p>Write small snippets of code, testing your code.</p>
                         <pre class="python"><code data-trim data-noescape data-line-numbers>
 def test_modelling():
     assert my_model == expected_data
 
     plot(my_model)
                         </code></pre>
-                        <p class="fragmetn">Ensures stability and collaboration</p>
+                        <p class="fragment">Tests enable contribution by others and give confidence in your work
+                            ✨</p>
+                        <pre class="sh fragment"><code data-trim data-noescape>
+$ pytest test/my_model.py
+=============================================== test session starts ===============================================
+collected 1 items
+
+test/my_model.py::test_modelling PASSED
+=============================================== 1 passed, in 1.2 s  ===============================================
+                        </code></pre>
                     </section>
 
                     <section>
-                        <h2>Git Workflow</h2>
-                        <p>Collaboration with colleagues and peers.</p>
+                        <h2>Work together</h2>
+                        <p>Collaborate and discuss with colleagues and peers.</p>
                         <img data-src="figures/git-workflow.jpg" />
-                        <p class="fragment">Use code reviews, get out there and stand the critic.</p>
+                        <p>Git workflow. Use <b>code reviews</b>, get out and stand the critic.</p>
                         <aside class="notes">Sometimes the ego is in our way. Try taking it out.</aside>
                     </section>
                     <section>
                         <h2>Code reviews</h2>
-                        <iframe data-src="https://github.com/obspy/obspy/pull/3002" class="r-stretch"
-                            width="90%"></iframe>
+                        <!-- <iframe data-src="https://github.com/obspy/obspy/pull/3002" class="r-stretch"
+                            width="90%"></iframe> -->
+                        <img data-src="figures/github-pull-requests.png" class="r-stretch" />
                     </section>
 
                     <section data-visibility="hidden">
@@ -251,7 +276,7 @@ def test_modelling():
                     </section>
 
                     <section>
-                        <h2>DevOps: Automation through CI/CD </h2>
+                        <h2>Automate Everything: DevOps CI/CD </h2>
                         <p>GitHub Actions: Quality assurance through continuous integration (CI)</p>
                         <pre class="yaml"><code data-trim data-line-numbers>
 name: Lint
@@ -263,9 +288,9 @@ jobs:
     - uses: actions/checkout@v2
     - uses: psf/black@stable
                       </code></pre>
-                        <div>
-                            <p>To publish a Python package, just use:</p>
-                            <pre class="fragment yaml"><code data-trim data-line-numbers>
+                        <div class="fragment">
+                            <p>Publish a Python package (CD):</p>
+                            <pre class="yaml"><code data-trim data-line-numbers>
 name: Build
 on: [push, pull_request]
 jobs:
@@ -274,50 +299,128 @@ jobs:
   runs-on: ${{ matrix.os }}
   ...
 </code></pre>
+                            <pre class="bash"><code data-trim>
+# Easy installation!
+$ pip install earthquake-analysis</code></pre>
                         </div>
-                        <p class="fragment">Put these files in <span
-                                style="font-family: monospace;">.github/workflows/lint.yaml</span></p>
                     </section>
 
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Open Data</h2>
+                    <section data-background-image="figures/verne-ho-0LAJfSNa-xQ-unsplash.jpg">
+                        <div class="box text-shadow">
+                            <h2>Open Data</h2>
+                            <p>Semantics, Serialization and Standards</p>
+                        </div>
                     </section>
                     <section>
-                        <h2>Finding the right format</h2>
+                        <h2>Serializing Data</h2>
+                        <p>Easy to read for <b>humans and computers</b></p>
+                        <div class="fragment">
+
+                            <h4>1. Flat (CSV)</h4>
+                            <pre class="bash"><code data-trim data-noescape data-line-numbers>
+# Coordinates in UTM Zone 31N
+# Time (UTC), East (m), North (m), z (km), Magnitude (Mw)
+2022-01-30T12:31:31.330, 6831347, 5641710, 12.1, 3.1
+                                                        </code></pre>
+                            <!-- <p>Simple data formats, like CSV</p> -->
+                        </div>
+                        <div class="fragment">
+                            <h4>2. Hierarchical (JSON, YAML)</h4>
+                            <pre class="json"><code data-trim data-noescape data-line-numbers>
+{
+  [
+    "region_name": "Northern Atlantic Ridge",
+    "time": "2022-01-30T12:31:31.330",
+    "magnitude": 3.1,
+    "latitude": 6831347,
+    "longitude": 5641710,
+    "depth": 12.1,
+    "picks": {
+      "NT.STA.CHA": {
+          "P": "2022-01-30T12:34:32.430"
+        }
+    }
+  ]
+}
+</code></pre>
+                            <!-- <p>e.g. JSON or YAML</p> -->
+                        </div>
+
                     </section>
                     <section>
-                        <h2>Clear language (Metadata</h2>)
+                        <h2>Semantic Matters</h2>
+                        <pre class="bash"><code data-trim data-noescape data-line-numbers>
+# Date, t, E, N, z, M
+220130, 12:31:31.33, 6831347, 5641710, 12.1, 3.1
+                        </code></pre>
+                        <div class="fragment">
+                            <p>Clear and self-explaining descriptions</p>
+                            <pre class="bash"><code data-trim data-noescape data-line-numbers>
+# Coordinates in UTM Zone 31N
+# Time (UTC), East (m), North (m), z (km), Magnitude (Mw)
+2022-01-30T12:31:31.330, 6831347, 5641710, 12.1, 3.1
+                            </code></pre>
+                        </div>
                     </section>
                     <section>
-                        <h2>Provide a library</h2>
+                        <h3>Binary data</h3>
+                        <p>e.g. Waveforms or image data</p>
+                        <img data-src="figures/binary-data-inverted.png" />
+                        <p>Requires library to read</p>
                     </section>
+
                     <section>
-                        <h2>Definition of APIs</h2>
+                        <h2>Standardization and Formats</h2>
+                        <p><b>Standards need a reference implementation</b></p>
+                        <ul>
+                            <li>Read and write</li>
+                            <li>Query data</li>
+                            <li>Manipulate data sets</li>
+                        </ul>
+                        <div style="margin-top: 2em;">
+                            <p>e.g. MiniSeed or generic HDF5</p>
+                            <pre class="python"><code data-trim data-noescape data-line-numbers>
+from obspy import read
+stream = read("my-waveform-data.mseed")
+                            </code></pre>
+                        </div>
                     </section>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Publishing Software and Data</h2>
-                        <p>Referencing and citations 🎓</p>
+                    <section data-background-image="figures/library.jpg">
+                        <div class="box text-shadow">
+                            <h2>Publishing Software and Data 🎓</h2>
+                            <p>Documented and citeable </p>
+                        </div>
                     </section>
                     <section>
-                        <h2>Zenodo</h2>
-                        <p>Easy DOIs on data and software, not reviewed.</p>
-                        <iframe data-src="https://zenodo.org/" class="r-stretch" width="80%"></iframe>
+                        <h2>Software Licensing</h2>
+                        <p>An open source license protects contributors and users</p>
+                        <iframe data-src="https://choosealicense.com/licenses/" class="r-stretch"></iframe>
+                        <p style="font-size: smaller;"><a href="https://choosealicense.com"
+                                target="_blank">choosealicense.com</a></p>
                     </section>
                     <section>
                         <h2>JOSS</h2>
-                        <p>The Journal of Open Source Software, peer-reviewed.</p>
-                        <iframe data-src="https://joss.theoj.org/" class="r-stretch" width="80%"></iframe>
-                        <p>Short papers displaying methods and maturity of your software.</p>
+                        <p>The Journal of Open Source Software, peer-reviewed!</p>
+                        <!-- <iframe data-src="https://joss.theoj.org/" class="r-stretch" width="80%"></iframe> -->
+                        <img data-src="figures/joss.jpg" class="r-stretch" />
+                        <p>Short papers presenting methods and maturity of software.</p>
+                    </section>
+                    <section>
+                        <h2>Zenodo</h2>
+                        <p>Data and software, not reviewed. Service by CERN.</p>
+                        <!-- <iframe data-src="https://zenodo.org/" class="r-stretch" width="80%"></iframe> -->
+                        <img data-src="figures/zenodo.jpg" class="r-stretch" />
+                        <p>Self-proclaimed DOIs, can link to GitHub repositories.</p>
                     </section>
                 </section>
                 <section>
-                    <h2>Thank you 🍋</h2>
+                    <h2>Thank you! 🍋</h2>
                 </section>
             </div>
         </div>
