@@ -41,14 +41,14 @@
                     </ol>
                 </section>
                 <section>
-                    <section data-background-image="figures/library.jpg">
+                    <section data-background-image="figures/lachlan-donald-YVT5aF2QM7M-unsplash.jpg">
                         <div class="box text-shadow">
                             <h2>Why is open software important?</h2>
                             <ul>
-                                <li class="fragment">
+                                <li>
                                     Sharing and reuse benefits all 🔥</li>
                                 <li class="fragment">Contribute to the knowledge society</li>
-                                <li class="fragment">Discuss implementations to peers</li>
+                                <li class="fragment">Discuss implementations with peers</li>
                             </ul>
                             <p class="fragment" style="font-style: italic;margin-top: 2em;">
                                 ... Scientific code is as important as the paper</p>
@@ -61,6 +61,8 @@
 
                             </aside>
                         </div>
+                        <p style="font-size: small; color: black; margin-top: 3em">Photo by Lachlan Donald on Unsplash
+                        </p>
                     </section>
                     <section data-background-color="white">
                         <h2>European Commission Guidelines</h2>
@@ -75,11 +77,11 @@
                     <section>
                         <h2>What are principles of open software?</h2>
                         <ul>
-                            <li class="fragment fade-in-then-semi-out">Free and open access &rarr; <span
-                                    style="font-family: monospace;">git</span> / GitHub</li>
-                            <li class="fragment fade-in-then-semi-out">Readable</li>
-                            <li class="fragment fade-in-then-semi-out">Maintainable</li>
-                            <li class="fragment fade-in-then-semi-out">Modular and extensible</li>
+                            <li>Free and open access &rarr; <span style="font-family: monospace;">git</span> / GitHub
+                            </li>
+                            <li class="fragment">Readable</li>
+                            <li class="fragment">Maintainable</li>
+                            <li class="fragment">Modular and extensible</li>
                         </ul>
                         <p class="fragment" style="margin-top: 2em">
                             🐿️ Open to the community, engagement to collaboration<br />
@@ -97,7 +99,7 @@
                         <h2>Readable code 📚</h2>
                         <ul>
                             <li><b>Reading code</b> takes as much time as writing it</li>
-                            <li class="fragment">Facilitates code <b>review and contribution</b></li>
+                            <li>Facilitates code <b>review and contribution</b></li>
                         </ul>
                         <aside class="notes">YOU need to read your code again! How often have you come back and could
                             not read your code?</aside>
@@ -125,7 +127,7 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     ...
 </code>
                     </pre>
-                            <p class="fragment">Principle of <b>self-documenting code</b><br />
+                            <p>Principle of <b>self-documenting code</b><br />
                                 Avoid comments where not necessary</p>
                         </div>
                         <aside class="notes">
@@ -134,7 +136,69 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                     </section>
 
                     <section data-auto-animate>
-                        <h2>Code is communication</h2>
+                        <h2>Code Formatting</h2>
+                        <pre class="python"><code data-trim data-line-numbers>
+                            def select_earthquakes(catalog,max_distance,max_depth,sort = False):
+                            if catalog==None: return
+    total_earthquakes=len(catalog)
+    selected_earthquakes= set()
+    for earthquake in catalog:
+        selected_earthquakes.add(
+        earthquake
+        )
+    ...
+</code></pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Code Formatting</h2>
+                        <pre class="python"><code data-trim data-line-numbers>
+def select_earthquakes(catalog,max_distance,max_depth,sort = False):
+    if catalog==None: return
+    total_earthquakes=len(catalog)
+    selected_earthquakes= set()
+    for earthquake in catalog:
+    selected_earthquakes.add(
+        earthquake
+        )
+        ...
+    </code></pre>
+                        <div class="fragment">
+                            <p>Code styles can look different. They should not!</p>
+                            <pre class="python"><code data-trim data-line-numbers>
+def select_earthquakes(catalog, max_distance, max_depth, sort=False):
+    if catalog is None:
+        return
+
+    total_earthquakes = len(catalog)
+
+    selected_earthquakes = set()
+    for earthquake in catalog:
+        selected_earthquakes.add(earthquake)
+
+    ...
+                        </code></pre>
+
+                            <p>Our brain is extremely good at pattern recognition: Use <b>autoformatters and
+                                    linters.</b></p>
+                            <ul style="font-size: smaller">
+                                <li>Python: black / autopep8 / flake8</li>
+                                <li>Matlab: mlint</li>
+                            </ul>
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>Your brain is extremely good at pattern matching. Use it!</li>
+                                <li>Modern programming languages come with built-in tools, they can only look one
+                                    way
+                                </li>
+                                <li>Automate this in modern IDEs</li>
+                                <li>black, autopep8, flake8. Matlab: mlint</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h2>Code Documentation</h2>
                         <pre class="python" data-id="example-good"><code data-trim data-line-numbers>
 for earthquake in catalog:
     selected_earthquakes.add(earthquake)
@@ -152,71 +216,19 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     sort (bool, optional): Limit number of earthquakes. Defaults to False.
     """
     ...</code></pre>
-                        <p>Automatically generate online documentation</p>
-                    </section>
-
-                    <section data-auto-animate>
-                        <h2>Code Formatting</h2>
-                        <p>Code styles can look different. They should not!</p>
-                        <pre class="python"><code data-trim data-line-numbers>
-def select_earthquakes(catalog,max_distance,max_depth,sort = False):
-    if catalog==None: return
-    total_earthquakes=len(catalog)
-    selected_earthquakes= set()
-    for earthquake in catalog:
-        selected_earthquakes.add(
-        earthquake
-        )
-
-    ...
-                        </code></pre>
-                    </section>
-                    <section data-auto-animate>
-                        <h2>Code Formatting</h2>
-                        <p>Code styles can look different. They should not!</p>
-                        <pre class="python"><code data-trim data-line-numbers>
-def select_earthquakes(catalog, max_distance, max_depth, sort=False):
-    if catalog is None:
-        return
-
-    total_earthquakes = len(catalog)
-
-    selected_earthquakes = set()
-    for earthquake in catalog:
-        selected_earthquakes.add(earthquake)
-
-    ...
-                        </code></pre>
-
-                        <p><b>Use autoformatters and linters</b></p>
-                        <div>
-                            <ul>
-                                <li>Python: black / autopep8 / flake8</li>
-                                <li>Matlab: mlint</li>
-                            </ul>
-                        </div>
-                        <aside class="notes">
-                            <ul>
-                                <li>Your brain is extremely good at pattern matching. Use it!</li>
-                                <li>Modern programming languages come with built-in tools, they can only look one
-                                    way
-                                </li>
-                                <li>Automate this in modern IDEs</li>
-                                <li>black, autopep8, flake8. Matlab: mlint</li>
-                            </ul>
-                        </aside>
+                        <p>Automatically generate online <b>documentation for users and contributors</b></p>
                     </section>
 
                     <section>
                         <h2>Leverage modern editors</h2>
                         <p>Modern IDEs <b>automate tasks</b> and provide <b>contextual information</b>.</p>
                         <div class="r-stretch"><img data-src="figures/hello-world.gif" /></div>
-                        <ul>
+                        <ul style="font-size: smaller">
                             <li>Autocompletion</li>
-                            <li>Formatting</li>
-                            <li>Linting / static code analysis</li>
+                            <li>Automatic formatting</li>
+                            <li>Linting and static code analysis</li>
                         </ul>
-                        <p>&rarr; Smoother workflow, less bugs!</p>
+                        <p>&rarr; Smoother workflow, fewer bugs!</p>
                     </section>
 
                     <section data-background-color="white">
@@ -237,17 +249,16 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                     </section>
 
                     <section>
-                        <h2>Unittests</h2>
-                        <p>Write small snippets of code, testing your code.</p>
+                        <h2>Testing</h2>
+                        <p>Write small snippets of code, unit testing functions.</p>
                         <pre class="python"><code data-trim data-noescape data-line-numbers>
 def test_modelling():
     assert my_model == expected_data
 
     plot(my_model)
                         </code></pre>
-                        <p class="fragment">Tests enable contribution by others and give confidence in your work
-                            ✨</p>
-                        <pre class="sh fragment"><code data-trim data-noescape>
+                        <p>Tests enable contribution by others and give confidence in your work ✨</p>
+                        <pre class="sh"><code data-trim data-noescape>
 $ pytest test/my_model.py
 =============================================== test session starts ===============================================
 collected 1 items
@@ -259,9 +270,9 @@ test/my_model.py::test_modelling PASSED
 
                     <section>
                         <h2>Work together</h2>
-                        <p>Collaborate and discuss with colleagues and peers.</p>
+                        <p>Collaborate and discuss with colleagues and peers</p>
                         <img data-src="figures/git-workflow.jpg" />
-                        <p>Git workflow. Use <b>code reviews</b>, get out and stand the critic.</p>
+                        <p>Git workflow. Use <b>code reviews</b>, get out and stand the critic</p>
                         <aside class="notes">Sometimes the ego is in our way. Try taking it out.</aside>
                     </section>
                     <section>
@@ -420,7 +431,7 @@ stream = read("my-waveform-data.mseed")
                     </section>
                 </section>
                 <section>
-                    <h2>Thank you! 🍋</h2>
+                    <h2>Thank you! 🦙</h2>
                 </section>
             </div>
         </div>
