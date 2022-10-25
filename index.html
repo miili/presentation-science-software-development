@@ -44,8 +44,8 @@
                         <ul>
                             <li class="fragment fade-in-then-semi-out" style="font-style: italic;">Scientific code is as
                                 important as the paper</li>
-                            <li class="fragment fade-in-then-semi-out">Software is needed to reproduce results</li>
-                            <li class="fragment fade-in-then-semi-out">Tools can be shared with the community 🔥</li>
+                            <li class="fragment fade-in-then-semi-out">Discuss implementations with peers</li>
+                            <li class="fragment fade-in-then-semi-out">Tools can be shared 🔥</li>
                         </ul>
 
                         <aside class="notes">
@@ -59,13 +59,14 @@
                     <section>
                         <h2>What is sustainable software?</h2>
                         <ul>
-                            <li class="fragment fade-in-then-semi-out">Open access</li>
+                            <li class="fragment fade-in-then-semi-out">Open access &rarr; <span
+                                    style="font-family: monospace;">git</span> / GitHub</li>
                             <li class="fragment fade-in-then-semi-out">Readable</li>
                             <li class="fragment fade-in-then-semi-out">Maintainable</li>
                             <li class="fragment fade-in-then-semi-out">Modular and extensible</li>
                         </ul>
                         <p class="fragment">
-                            🐿️ Open to the community, open to collaboration.
+                            🐿️ Open to the community, engagement to collaboration.
                         </p>
                         <aside class="notes">
                             <ul>
@@ -136,14 +137,12 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     sort (bool, optional): Limit number of earthquakes. Defaults to False.
     """
     ...</code></pre>
-                        <p>Be descriptive.</p>
-                        <p class="fragment">Principle of <b>self-documenting code</b>.<br />Avoid unnecessary comments.
-                        </p>
+                        <p>Function documentation. Automatically generate online documentation.</p>
                     </section>
 
                     <section data-auto-animate>
                         <h2>Code Formatting</h2>
-                        <p>Every code looks different. It shouldn't!</p>
+                        <p>Code styles can look different. It shouldn't!</p>
                         <pre class="python"><code data-trim data-line-numbers>
 def select_earthquakes(catalog,max_distance,max_depth,sort = False):
     if catalog==None: return
@@ -176,11 +175,18 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
     ...
                         </code></pre>
 
-                        <p>Use autoformatters and linters.</p>
+                        <p><b>Use autoformatters and linters.</b></p>
+                        <div>
+                            <ul>
+                                <li>Python: black / autopep8 / flake8</li>
+                                <li>Matlab: mlint</li>
+                            </ul>
+                        </div>
                         <aside class="notes">
                             <ul>
                                 <li>Your brain is extremely good at pattern matching. Use it!</li>
-                                <li>Modern programming languages come with built-in tools, they can only look one way
+                                <li>Modern programming languages come with built-in tools, they can only look one
+                                    way
                                 </li>
                                 <li>Automate this in modern IDEs</li>
                                 <li>black, autopep8, flake8. Matlab: mlint</li>
@@ -189,30 +195,90 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                     </section>
 
                     <section>
-                        <h2>Code Reviews</h2>
-                        Use GitHub code reviews, get out there and stand the critiques.
-                        <aside class="notes">Sometimes the ego is in our way. Try taking it out.</aside>
+                        <h2>Leverage modern editors</h2>
+                        <p>Modern IDEs automate tasks and provide contextual information.</p>
+                        <div class="r-stretch"><img data-src="figures/hello-world.gif" /></div>
+                        <ul>
+                            <li>Autocompletion</li>
+                            <li>Formatting</li>
+                            <li>Linting / static code analysis</li>
+                        </ul>
+                        <p>&rarr; Smooth workflow, fewer bugs</p>
                     </section>
 
+                    <section data-background-color="white">
+                        <h2>Programming Patterns</h2>
+                        <img data-src="figures/pattern-observer.png" width="30%" />
+                        <p>e.g. observer pattern / Credit: <a href="https://refactoring.guru">refactoring.guru</a></p>
+                        <p style="font-style: italic;">Design Patterns: Elements of Reusable Object-Oriented
+                            Software (1994)
+                        </p>
+                    </section>
                     <section>
                         <h2>Programming Patterns</h2>
-                        See gang of four.
+                        <iframe data-src="https://refactoring.guru/design-patterns/catalog" width="90%"
+                            class="r-stretch" data-preload></iframe>
+                        <p>Credit: <a href="https://refactoring.guru">refactoring.guru</a></p>
                     </section>
 
                     <section>
+                        <h2>Unittests</h2>
+                        <p>Write small snippets of code testing your functions.</p>
+                        <pre class="python"><code data-trim data-noescape data-line-numbers>
+def test_modelling():
+    assert my_model == expected_data
+
+    plot(my_model)
+                        </code></pre>
+                        <p class="fragmetn">Ensures stability and collaboration</p>
+                    </section>
+
+                    <section>
+                        <h2>Git Workflow</h2>
+                        <p>Collaboration with colleagues and peers.</p>
+                        <img data-src="figures/git-workflow.jpg" />
+                        <p class="fragment">Use code reviews, get out there and stand the critic.</p>
+                        <aside class="notes">Sometimes the ego is in our way. Try taking it out.</aside>
+                    </section>
+                    <section>
+                        <h2>Code reviews</h2>
+                        <iframe data-src="https://github.com/obspy/obspy/pull/3002" class="r-stretch"
+                            width="90%"></iframe>
+                    </section>
+
+                    <section data-visibility="hidden">
                         <h2>Packaging Software -> Accessibility</h2>
                     </section>
 
                     <section>
-                        <h2>Automation</h2>
+                        <h2>DevOps: Automation through CI/CD </h2>
+                        <p>GitHub Actions: Quality assurance through continuous integration (CI)</p>
+                        <pre class="yaml"><code data-trim data-line-numbers>
+name: Lint
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: psf/black@stable
+                      </code></pre>
+                        <div>
+                            <p>To publish a Python package, just use:</p>
+                            <pre class="fragment yaml"><code data-trim data-line-numbers>
+name: Build
+on: [push, pull_request]
+jobs:
+  build_wheels:
+  name: Build wheels on ${{ matrix.os }}
+  runs-on: ${{ matrix.os }}
+  ...
+</code></pre>
+                        </div>
+                        <p class="fragment">Put these files in <span
+                                style="font-family: monospace;">.github/workflows/lint.yaml</span></p>
                     </section>
 
-                    <section>
-                        <h2>DevOps: Automation through CI/CD </h2>
-                    </section>
-                    <section>
-                        <h2>Modern IDEs</h2>
-                    </section>
                 </section>
 
                 <section>
@@ -236,13 +302,22 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                 <section>
                     <section>
                         <h2>Publishing Software and Data</h2>
+                        <p>Referencing and citations 🎓</p>
                     </section>
                     <section>
                         <h2>Zenodo</h2>
+                        <p>Easy DOIs on data and software, not reviewed.</p>
+                        <iframe data-src="https://zenodo.org/" class="r-stretch" width="80%"></iframe>
                     </section>
                     <section>
-                        <h2>JOSS A reviewed journal.</h2>
+                        <h2>JOSS</h2>
+                        <p>The Journal of Open Source Software, peer-reviewed.</p>
+                        <iframe data-src="https://joss.theoj.org/" class="r-stretch" width="80%"></iframe>
+                        <p>Short papers displaying methods and maturity of your software.</p>
                     </section>
+                </section>
+                <section>
+                    <h2>Thank you 🍋</h2>
                 </section>
             </div>
         </div>
@@ -259,6 +334,7 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                 hash: true,
                 width: 1920,
                 height: 1080,
+                slideNumber: true,
                 // Learn about plugins: https://revealjs.com/plugins/
                 plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
             });
