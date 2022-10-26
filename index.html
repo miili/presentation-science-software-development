@@ -138,20 +138,6 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                     <section data-auto-animate>
                         <h2>Formatting Standards</h2>
                         <pre class="python"><code data-trim data-line-numbers>
-                            def select_earthquakes(catalog,max_distance,max_depth,sort = False):
-                            if catalog==None: return
-    total_earthquakes=len(catalog)
-    selected_earthquakes= set()
-    for earthquake in catalog:
-        selected_earthquakes.add(
-        earthquake
-        )
-    ...
-</code></pre>
-                    </section>
-                    <section data-auto-animate>
-                        <h2>Formatting Standards</h2>
-                        <pre class="python"><code data-trim data-line-numbers>
 def select_earthquakes(catalog,max_distance,max_depth,sort = False):
     if catalog==None: return
     total_earthquakes=len(catalog)
@@ -401,9 +387,9 @@ stream = read("my-waveform-data.mseed")
                     </section>
                     <section>
                         <h2>API Orchestration</h2>
-                        <p>Many services have to talk to each other in real-time.</p>
+                        <p>Many services have to talk to each other in real-time</p>
                         <img data-src="figures/API-orchestration.png" class="r-stretch" />
-                        <p>Clear definition of data schemas, and interfaces.</p>
+                        <p>Clear definition of communication: Data schemas and interfaces</p>
                     </section>
                 </section>
 
@@ -411,7 +397,7 @@ stream = read("my-waveform-data.mseed")
                     <section data-background-image="figures/library.jpg">
                         <div class="box text-shadow">
                             <h2>Publishing Software and Data 🎓</h2>
-                            <p>Documented and citeable </p>
+                            <p>License, Documentation and Citation</p>
                         </div>
                     </section>
                     <section>
