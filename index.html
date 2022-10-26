@@ -136,7 +136,7 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
                     </section>
 
                     <section data-auto-animate>
-                        <h2>Code Formatting</h2>
+                        <h2>Formatting Standards</h2>
                         <pre class="python"><code data-trim data-line-numbers>
                             def select_earthquakes(catalog,max_distance,max_depth,sort = False):
                             if catalog==None: return
@@ -150,7 +150,7 @@ def select_earthquakes(catalog, max_distance, max_depth, sort=False):
 </code></pre>
                     </section>
                     <section data-auto-animate>
-                        <h2>Code Formatting</h2>
+                        <h2>Formatting Standards</h2>
                         <pre class="python"><code data-trim data-line-numbers>
 def select_earthquakes(catalog,max_distance,max_depth,sort = False):
     if catalog==None: return
@@ -322,7 +322,7 @@ $ pip install earthquake-analysis</code></pre>
                     <section data-background-image="figures/verne-ho-0LAJfSNa-xQ-unsplash.jpg">
                         <div class="box text-shadow">
                             <h2>Open Data</h2>
-                            <p>Semantics, Serialization and Standards</p>
+                            <p>Semantics, Serialization and Exchange</p>
                         </div>
                     </section>
                     <section>
@@ -339,7 +339,7 @@ $ pip install earthquake-analysis</code></pre>
                             <!-- <p>Simple data formats, like CSV</p> -->
                         </div>
                         <div class="fragment">
-                            <h4>2. Hierarchical (JSON, YAML)</h4>
+                            <h4>2. Hierarchical Schemas (JSON, YAML)</h4>
                             <pre class="json"><code data-trim data-noescape data-line-numbers>
 {
   [
@@ -376,7 +376,7 @@ $ pip install earthquake-analysis</code></pre>
                             </code></pre>
                         </div>
                     </section>
-                    <section>
+                    <section data-visibility="hidden">
                         <h3>Binary data</h3>
                         <p>e.g. Waveforms or image data</p>
                         <img data-src="figures/binary-data-inverted.png" />
@@ -398,6 +398,12 @@ from obspy import read
 stream = read("my-waveform-data.mseed")
                             </code></pre>
                         </div>
+                    </section>
+                    <section>
+                        <h2>API Orchestration</h2>
+                        <p>Many services have to talk to each other in real-time.</p>
+                        <img data-src="figures/API-orchestration.png" class="r-stretch" />
+                        <p>Clear definition of data schemas, and interfaces.</p>
                     </section>
                 </section>
 
@@ -431,7 +437,7 @@ stream = read("my-waveform-data.mseed")
                     </section>
                 </section>
                 <section>
-                    <h2>Thank you! 🦙</h2>
+                    <h2>Thank you!<br />🦙</h2>
                 </section>
             </div>
         </div>
